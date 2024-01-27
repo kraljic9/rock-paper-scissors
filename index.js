@@ -1,3 +1,22 @@
+function playRound(playerSelection, computerSelection){
+    if (playerSelection === "Rock" && computerSelection === "Paper") {
+      return "Computer Wins"
+  } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+      return "Computer Wins"
+  } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+      return "Computer Wins"
+  } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+      return "Player Wins"
+  } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+      return "Player Wins"
+  } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+      return "Player Wins"
+  } else {
+    return "Draw"
+  }   
+
+}
+
 function getComputerChoice() {
     let randomChoice = Math.floor(Math.random() * 3);
     
@@ -5,27 +24,24 @@ function getComputerChoice() {
         case 0:
             return "Rock";
         case 1:
-            return "Papper";
+            return "Paper";
         case 2:
             return "Scissors";
     }
 }
 
-function getPlayersChoice(){
-    let playerChoice = prompt("Choose rock, papper or scissors").toLowerCase;
+function getPlayerChoice(){
+    let playerChoice = prompt("Choose rock, paper or scissors");
 
-    if (playerChoice != "rock" && playerChoice != "papper" && playerChoice != "scissors") {
-        prompt("Sorry you need to choose between rock, papper and scissors")
-    } else if (playerChoice === "") {
-        prompt("Sorry you need to choose between rock, papper and scissors")
-    }    
-
-    console.log(playerChoice);
+    if (playerChoice === "Paper" || playerChoice === "Rock" || playerChoice === "Scissors") {
+        return playerChoice;
+    }  else {
+        alert("Invalid choise")
+        return getPlayerChoice();
+    }
 }
-
-
-
 let computerSelection = getComputerChoice();
-let playeSelection = getPlayersChoice();
+let playerSelection = getPlayerChoice();
 
-console.log(computerSelection, playeSelection);
+
+console.log(playRound(playerSelection, computerSelection));
